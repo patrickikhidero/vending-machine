@@ -34,6 +34,6 @@ class Menu:
                 try:
                     return item
                 except (TypeError, ValueError):
-                    pass
+                    print("Sorry that item is not available.")
                 
-        print("Sorry that item is not available.")
+        

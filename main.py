@@ -10,19 +10,23 @@ from menu import Menu, MenuItem
 from coffee_maker import CoffeeMaker
 from payment import MachinePayment
 
-will_continue = True
-menu = Menu()
-name = menu.get_items()
-money_machine = MachinePayment()
-coffee_maker = CoffeeMaker()
-while will_continue:
-    choice = input(f"What would you like? ({name}): ").lower()
-    if choice == "off":
-        will_continue = False
-    elif choice == "report":
-        coffee_maker.report()
-        money_machine.report()
-    else:
-        drink = menu.find_drink(choice)
-        if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(drink.cost):
-            coffee_maker.make_coffee(drink)
+def main1_menu():
+    will_continue = True
+    menu = Menu()
+    name = menu.get_items()
+    money_machine = MachinePayment()
+    coffee_maker = CoffeeMaker()
+    while will_continue:
+        choice = input(f"What would you like? ({name}): ").lower()
+        if choice == "off":
+            will_continue = False
+        elif choice == "report":
+            coffee_maker.report()
+            money_machine.report()
+        else:
+            drink = menu.find_drink(choice)
+            if coffee_maker.is_resource_sufficient(drink) and money_machine.make_payment(drink.cost):
+                coffee_maker.make_coffee(drink)
+
+if __name__ == '__main__':                 
+    new = main1_menu()
